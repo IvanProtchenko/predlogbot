@@ -1,2 +1,3 @@
-python3 -m venv env
-env/bin/pip install -r requirements.txt
+Бот пересылает сообщения которые ему отправил пользователь в группу или чат.
+
+id бота и чата устанавливаются в docker-compose.yml
