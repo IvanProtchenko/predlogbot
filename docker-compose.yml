@@ -1,0 +1,13 @@
+version: '3.7'
+services:
+    predlogbot:
+        image: ivanprotchenko/predlogbot:latest
+        volumes:
+            - /etc/localtime:/etc/localtime:ro
+            - /etc/timezone:/etc/timezone:ro
+        environment:
+            - TOKEN=1
+            - GROUP_ID=-1
+            - HELLO_MSG=HELLO_MSG
+        container_name: predlogbot
+        restart: always
