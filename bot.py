@@ -16,14 +16,16 @@ def send_welcome(message):
 def id(message):
     bot.reply_to(message,message.chat.id)
 
-@bot.message_handler(func=lambda message: True, content_types=['photo','audio', 'video', 'document', 'text', 'location', 'contact', 'sticker'])
+@bot.message_handler(func=lambda message: True, content_types=['photo','audio', 'video', 'document', 'text', 'location', 'contact', 'sticker','voice'])
 def all_messages(message):
-    #print(str(message))
-    bot.reply_to(message, 'Сообщение принято')
-    bot.forward_message(GROUP_ID, message.chat.id, message.message_id)
+    if str(message.chat.id) != str(GROUP_ID):
+        bot.forward_message(GROUP_ID, message.chat.id, message.message_id)
+    else:
+        bot.send_message(message.from_user.id, message.text )
 
 if __name__ == '__main__':
     try:
         bot.polling(none_stop=True)
     except:
         print('ошибка')
+
