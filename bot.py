@@ -21,7 +21,8 @@ def all_messages(message):
     if str(message.chat.id) != str(GROUP_ID):
         bot.forward_message(GROUP_ID, message.chat.id, message.message_id)
     else:
-        bot.send_message(message.from_user.id, message.text )
+        if message.reply_to_message.forward_from != None:
+            bot.send_message(message.reply_to_message.forward_from.id, message.text )
 
 if __name__ == '__main__':
     try:
